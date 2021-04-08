@@ -78,6 +78,23 @@ def navi():
         talk(info)
         talk('Aqui tienes la informacion escrita')
         print(info)
+    #Comandos de voz
+    elif 'hola' in comando:
+        talk(f'Hola {Nombre}')
+        print(f'Hola {Nombre}')
+    elif 'trabajar' in comando:
+        talk(f'Claro que si {Nombre}, dime')
+        print(f'Claro que si {Nombre}, dime')
+        talk('Que quieres que haga por ti?')
+        print('Que quieres que haga por ti?')
+    #Terminar el programa
+    elif 'gracias' in comando:
+        talk(f'Denada {Nombre}')
+        print(f'Denada {Nombre}')
+        exit()
+    elif 'fue todo' in comando:
+        talk('Denada, si tienes otro  problema avisame')
+        print('Denada, si tienes otro problema avisame')
     else:
         talk('Vuelve a intentarlo')
         print('Vuelve a intentarlo')
