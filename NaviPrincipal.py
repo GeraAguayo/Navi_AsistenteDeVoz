@@ -5,6 +5,8 @@ import pyttsx3
 import pywhatkit
 import datetime
 import wikipedia
+from tkinter import *
+from PIL import Image,Image
 
 #HACER QUE NAVI TE LLAME POR TU NOMBRE
 '''
@@ -100,5 +102,16 @@ def navi():
         print('Vuelve a intentarlo')
 #Este while ayuda a que la aplicacion se siga reproduciendo en bucle
 #en caso de que no reconozca el comando de voz.
-while True:
+#while True:
     navi()
+
+#APLICACION GRAFICA
+ventana = Tk()
+ventana.title('Navi')
+
+#Boton de accion
+btn_navi = Button(ventana, text = "Presiona para hablar", command=navi)
+btn_navi.grid(column=0, row=0, padx = 5, pady = 5)
+
+
+ventana.mainloop()
