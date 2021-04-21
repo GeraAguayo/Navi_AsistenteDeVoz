@@ -5,7 +5,7 @@ import pyttsx3
 import pywhatkit
 import datetime
 import wikipedia
-from tkinter import *
+import tkinter
 from PIL import Image,Image
 
 #HACER QUE NAVI TE LLAME POR TU NOMBRE
@@ -15,6 +15,9 @@ from PIL import Image,Image
     por la manera en la que quieras que te llame Navi.
 '''
 Nombre = 'Itzel'
+
+
+#--------------------------------------------------------------------------------------
 
 #Proceso para llamar al reconocimiento de voz
 listener = sr.Recognizer()
@@ -37,6 +40,8 @@ def tomar_comando():
     except:
         pass
     return comando
+
+#-------------------------------------------------------------------------------------
 
 #Funcion donde basicamente esta el funcionaminento del programa
 def navi():
@@ -106,13 +111,17 @@ def navi():
     #navi()
 
 #APLICACION GRAFICA
-ventana = Tk()
+ventana = tkinter.Tk()
 ventana.title('Navi')
 ventana.geometry('450x300')
 
+#Obtener los comandos de voz para presentarlos en pantalla
+etq_navi = tkinter.Label(ventana)
+etq_navi.pack()
+
 #Boton de accion
-btn_navi = Button(ventana, text = "Presiona para hablar", command=navi)
-btn_navi.grid(column=0, row=0, padx = 5, pady = 5)
+btn_navi = tkinter.Button(ventana, text = "Presiona para hablar", command= navi)
+btn_navi.pack()
 
-
+#Iniciar aplicacion
 ventana.mainloop()
