@@ -119,8 +119,12 @@ ventana.geometry('450x300')
 etq_navi = tkinter.Label(ventana)
 etq_navi.pack()
 
+def escuchando():
+    etq_pant = tkinter.Label(ventana, text = 'Escuchando...')
+    etq_pant.pack() 
+
 #Boton de accion
-btn_navi = tkinter.Button(ventana, text = "Presiona para hablar", command= navi)
+btn_navi = tkinter.Button(ventana, text = "Presiona para hablar",command = escuchando,command= navi)
 btn_navi.pack()
 
 #Iniciar aplicacion
