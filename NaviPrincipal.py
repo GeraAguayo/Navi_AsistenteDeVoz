@@ -105,9 +105,7 @@ def navi():
     else:
         talk('Vuelve a intentarlo')
         print('Vuelve a intentarlo')
-    return comando
-#Este while ayuda a que la aplicacion se siga reproduciendo en bucle
-#en caso de que no reconozca el comando de voz.
+    return navi(comando)
 #while True:
     #navi()
 
@@ -120,8 +118,6 @@ ventana.geometry('450x300')
 
 #Boton de accion
 btn_navi = tkinter.Button(ventana, text = "Presiona para hablar",command = navi)
-etq = Label(self, text=comando)
-etq.pack()
 btn_navi.pack()
 
 #Iniciar aplicacion
