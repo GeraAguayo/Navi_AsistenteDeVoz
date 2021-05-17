@@ -10,25 +10,42 @@
     <height>343</height>
    </rect>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>4000000</width>
+    <height>2000000</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Noto Sans Light</family>
+    <pointsize>18</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Navi</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="btn_navi">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>170</y>
-      <width>101</width>
-      <height>101</height>
+      <x>70</x>
+      <y>160</y>
+      <width>121</width>
+      <height>81</height>
      </rect>
     </property>
-    <property name="text">
-     <string/>
+    <property name="font">
+     <font>
+      <family>Noto Sans Light</family>
+      <pointsize>16</pointsize>
+     </font>
     </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../../Documents/MaGe Dev/Recursos navi/NaviNegra.png</normaloff>../../Documents/MaGe Dev/Recursos navi/NaviNegra.png</iconset>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>Hablar</string>
     </property>
     <property name="iconSize">
      <size>
@@ -37,17 +54,58 @@
      </size>
     </property>
    </widget>
-   <widget class="QLabel" name="etq_escuchando">
+   <widget class="QPushButton" name="btnDetener">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>110</y>
-      <width>151</width>
-      <height>16</height>
+      <x>280</x>
+      <y>160</y>
+      <width>131</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Noto Sans Light</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>Detener</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>60</y>
+      <width>101</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>NaviImageApp.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="etq_escuchando">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>260</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>

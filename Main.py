@@ -1,4 +1,5 @@
 #Gerardo Aguayo
+from PyQt5.uic.properties import QtGui
 import speech_recognition as sr 
 import pyttsx3
 import pywhatkit
@@ -7,7 +8,7 @@ import wikipedia
 import sys
 from PyQt5 import uic
 from PyQt5.QtWidgets import *
-
+from PyQt5 import QtGui
 
 #Proceso para llamar al reconocimiento de voz
 listener = sr.Recognizer()
@@ -31,84 +32,86 @@ def tomar_comando():
         pass
     return comando
 
-
+def navi():
+    comando = tomar_comando()
+    print(comando)
+#Reproducir musica o videos en YouTube
+    if 'reproduce' in comando:
+        cancion = comando.replace('reproduce','')
+        talk('Reproduciendo ' + cancion)
+        print('Reproduciendo' + cancion)
+        pywhatkit.playonyt(cancion)
+    elif 'pon' in comando:
+        cancion = comando.replace('pon','')
+        talk('Reproduciendo ' + cancion)
+        print('Reproduciendo' + cancion)
+        pywhatkit.playonyt(cancion)
+#Que Navi te diga la hora
+    elif 'hora' in comando:
+        hora = datetime.datetime.now().strftime('%I:%M %p')
+        talk(f'La hora actual es {hora}')
+        print(f'La hora actual es {hora}')
+#Hacer que Navi investigue en Wikipedia
+    elif 'busca' in comando:
+        orden = comando.replace('busca', '')
+        wikipedia.set_lang('es')
+        info = wikipedia.summary(orden, 1)
+        talk(info)
+        talk('Aqui tienes la informacion escrita')
+        print(info)
+    elif 'que es' in comando:
+        orden = comando.replace('que es', '')
+        wikipedia.set_lang('es')
+        info = wikipedia.summary(orden, 1)
+        talk(info)
+        talk('Aqui tienes la informacion escrita')
+        print(info)
+    elif 'que significa' in comando:
+        orden = comando.replace('que significa', '')
+        wikipedia.set_lang('es')
+        info = wikipedia.summary(orden, 1)
+        talk(info)
+        talk('Aqui tienes la informacion escrita')
+        print(info)
+#Comandos de voz
+    elif 'hola' in comando:
+        talk(f'Hola!, soy Navi, tu asistente de voz')
+        print(f'Hola!, soy Navi, tu asistente de voz')
+    elif 'trabajar' in comando:
+        talk(f'Claro que si , dime')
+        print(f'Claro que si , dime')
+        talk('Que quieres que haga por ti?')
+        print('Que quieres que haga por ti?')
+#Terminar el programa
+    elif 'gracias' in comando:
+        talk(f'Denada!')
+        print(f'Denada!')
+        exit()
+    elif 'fue todo' in comando:
+        talk('Denada, si tienes otro  problema avisame')
+        print('Denada, si tienes otro problema avisame')
+    else:
+        talk('Vuelve a intentarlo')
+        print('Vuelve a intentarlo')
+    return comando
 
 
 class main(QMainWindow):
     def __init__(self):
         super().__init__()
+        self.setWindowIcon(QtGui.QIcon("IconoNaviBlanco.jpg"))
         uic.loadUi ('gui_navi.ui', self)
-        self.etq_escuchando.setEnabled(False)
         self.btn_navi.clicked.connect(self.btn_pulsado)
-
-    def navi(self, comando):
-        comando = tomar_comando()
-        print(comando)
-    #Reproducir musica o videos en YouTube
-        if 'reproduce' in comando:
-            cancion = comando.replace('reproduce','')
-            talk('Reproduciendo ' + cancion)
-            print('Reproduciendo' + cancion)
-            pywhatkit.playonyt(cancion)
-        elif 'pon' in comando:
-            cancion = comando.replace('pon','')
-            talk('Reproduciendo ' + cancion)
-            print('Reproduciendo' + cancion)
-            pywhatkit.playonyt(cancion)
-    #Que Navi te diga la hora
-        elif 'hora' in comando:
-            hora = datetime.datetime.now().strftime('%I:%M %p')
-            talk(f'La hora actual es {hora}')
-            print(f'La hora actual es {hora}')
-    #Hacer que Navi investigue en Wikipedia
-        elif 'busca' in comando:
-            orden = comando.replace('busca', '')
-            wikipedia.set_lang('es')
-            info = wikipedia.summary(orden, 1)
-            talk(info)
-            talk('Aqui tienes la informacion escrita')
-            print(info)
-        elif 'que es' in comando:
-            orden = comando.replace('que es', '')
-            wikipedia.set_lang('es')
-            info = wikipedia.summary(orden, 1)
-            talk(info)
-            talk('Aqui tienes la informacion escrita')
-            print(info)
-        elif 'que significa' in comando:
-            orden = comando.replace('que significa', '')
-            wikipedia.set_lang('es')
-            info = wikipedia.summary(orden, 1)
-            talk(info)
-            talk('Aqui tienes la informacion escrita')
-            print(info)
-    #Comandos de voz
-        elif 'hola' in comando:
-            talk(f'Hola!, soy Navi, tu asistente de voz')
-            print(f'Hola!, soy Navi, tu asistente de voz')
-        elif 'trabajar' in comando:
-            talk(f'Claro que si , dime')
-            print(f'Claro que si , dime')
-            talk('Que quieres que haga por ti?')
-            print('Que quieres que haga por ti?')
-    #Terminar el programa
-        elif 'gracias' in comando:
-            talk(f'Denada!')
-            print(f'Denada!')
-            exit()
-        elif 'fue todo' in comando:
-            talk('Denada, si tienes otro  problema avisame')
-            print('Denada, si tienes otro problema avisame')
-        else:
-            talk('Vuelve a intentarlo')
-            print('Vuelve a intentarlo')
-
-        return comando
-        return navi
+        self.etq_escuchando
 
     def btn_pulsado(self):
-        self.etq_escuchando.setEnabled(True)
-        navi()
+        self.etq_escuchando.setText('Escuchando...')
+        while True:
+            navi()#Este bucle hara que la funcion navi se ejecute en bucle
+
+    def paro_de_emergencia(self):
+        navi(exit)
+  
 
 #Todo lo que este en este condicional se va a ejecutar
 if __name__ == '__main__':
